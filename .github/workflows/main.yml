@@ -8,8 +8,6 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-      using: 'node20'
-
     steps:
       - uses: actions/checkout@v3
       - name: GitHub Sync to Upstream Repository
@@ -19,3 +17,6 @@ jobs:
           upstream_branch: main 
           downstream_branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
+
+runs:
+  using: 'node20'
