@@ -1,0 +1,20 @@
+name: Sync Fork
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 0 1 * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: GitHub Sync to Upstream Repository
+        uses: dabreadman/sync-upstream-repo@v1.3.0
+        with: 
+          upstream_repo: https://github.com/vfarcic/cncf-demo
+          upstream_branch: main 
+          downstream_branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
